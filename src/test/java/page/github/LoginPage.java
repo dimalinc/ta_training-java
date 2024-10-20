@@ -31,7 +31,7 @@ public class LoginPage extends AbstractPage
         PageFactory.initElements(this.driver, this);
     }
 
-    @Override
+
     public LoginPage openPage()
     {
         driver.navigate().to(PAGE_URL);

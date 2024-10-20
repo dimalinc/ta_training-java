@@ -37,7 +37,7 @@ public class MainPage extends AbstractPage
         return new CreateNewRepositoryPage(driver);
     }
 
-    @Override
+
     public MainPage openPage()
     {
         driver.navigate().to(BASE_URL);

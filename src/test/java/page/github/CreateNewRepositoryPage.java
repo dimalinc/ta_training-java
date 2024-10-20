@@ -60,7 +60,7 @@ public class CreateNewRepositoryPage extends AbstractPage
         return linkCurrentRepository.getText();
     }
 
-    @Override
+
     public CreateNewRepositoryPage openPage()
     {
         driver.navigate().to(BASE_URL);
