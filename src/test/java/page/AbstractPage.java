@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import page.cloud.google.com.CloudMainPage;
 
 public abstract class AbstractPage
 {
@@ -15,7 +14,7 @@ public abstract class AbstractPage
     private static  Logger log = null;
 
 
-    protected AbstractPage(WebDriver driver)
+    public AbstractPage(WebDriver driver)
     {
         this.driver = driver;
         log= LogManager.getLogger(this.getClass());

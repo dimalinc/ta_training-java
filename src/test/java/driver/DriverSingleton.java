@@ -5,15 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.Objects;
+
 public class DriverSingleton {
 
     private static WebDriver driver;
 
-
     private DriverSingleton(){}
 
     public static WebDriver getDriver(){
-        if (null == driver){
+        if (Objects.isNull(driver)){
             /*switch (System.getProperty("browser")){
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
@@ -29,8 +30,10 @@ public class DriverSingleton {
         return driver;
     }
 
-    public static void closeDriver(){
-        driver.quit();
-        driver = null;
+    public static void closeDriver() {
+        if (driver != null) {
+            driver.close();
+            driver = null;
+        }
     }
 }

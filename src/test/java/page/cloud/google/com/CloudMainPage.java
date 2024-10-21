@@ -14,7 +14,6 @@ import page.AbstractPage;
 import java.util.List;
 
 public class CloudMainPage extends AbstractPage {
-    private final WebDriver driver;
     private static final Logger log = LogManager.getLogger(CloudMainPage.class);
     public FluentWait fluentWaitSearchResults;
 

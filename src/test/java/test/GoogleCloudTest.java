@@ -21,16 +21,15 @@ import static util.Utils.*;
 
 public class GoogleCloudTest extends BaseTest {
 
-     private CalculatorPage calculator;
+    private CalculatorPage calculator;
     private PageDetailedView detailedView;
-    private static final WebDriver driver = DriverSingleton.getDriver();
     public static final String EXPECTED_PAGE_NAME = ("Google Cloud Pricing Calculator");
     public static final String CLOUD_URL = ("https://cloud.google.com/?hl=en");
     public static final String CALC_URL = ("https://cloud.google.com/products/calculator?hl=en");
     public static final String SEARCH_PROMPT = ("Google Cloud Platform Pricing Calculator");
 
 
-    @Test
+    @Test(priority=1)
     public void redirectsToCalculatorPage() {
 
         CloudMainPage cloudMainPage = new CloudMainPage(driver);
@@ -64,15 +63,14 @@ public class GoogleCloudTest extends BaseTest {
         assertEquals(EXPECTED_PAGE_NAME, actual);
     }
 
-    @Test
+    @Test(priority=2)
     public void calculatorPageTest() {
         CalculatorPage calculatorPage = new CalculatorPage(driver);
         calculatorPage = calculatorPage.open_URL(CALC_URL);
 
        calculatorPage = calculatorPage.compute_engine_click()
                .enter_numberOfInstances(4)
-               .selectServerType("n1-standard-8")
-       ;
+               .selectServerType("n1-standard-8");
 
     }
 

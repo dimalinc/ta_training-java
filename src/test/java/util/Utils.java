@@ -16,16 +16,8 @@ public class Utils {
         wait.withTimeout(Duration.ofMillis(timeout));
         wait.pollingEvery(Duration.ofMillis(pollingInterval));
         wait.ignoring(NoSuchElementException.class);
-
         return wait;
     }
-
-
-    /*public static void waitForElementRefreshed(WebDriver driver, int timeout, int pollingInterval, By by)
-    {
-        FluentWait fluentWait =  fluentWaitInit(driver,timeout,pollingInterval);
-        fluentWait.until(ExpectedConditions.refreshed() );
-    }*/
 
     public static void waitForElementTextToBePresent(WebDriver driver, int timeout, int pollingInterval, WebElement element, String text)
     {

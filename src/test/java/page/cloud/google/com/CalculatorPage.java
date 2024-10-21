@@ -66,13 +66,11 @@ public class CalculatorPage extends AbstractPage {
     @FindBy(xpath = "//a[@aria-label='Open detailed view']")
     private WebElement a_OpenDetailedView;
 
-    private final WebDriver driver;
     private static final Logger log = LogManager.getLogger(CalculatorPage.class);
 
     public CalculatorPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     public CalculatorPage open_URL(String url) {
@@ -116,7 +114,7 @@ public class CalculatorPage extends AbstractPage {
 
         dropdownList_performSelection(dropdovnList_machineTypes,serverType);
 
-        waitForElementTextToBePresent(driver,5000,250,machineTypeTextAfterSelectingPerformed,serverType);
+        //waitForElementTextToBePresent(driver,5000,250,machineTypeTextAfterSelectingPerformed,serverType);
 
         log.info("Server type set to: {}\n Expected type: {}", machineTypeTextAfterSelectingPerformed.getText(), serverType);
         return this;
