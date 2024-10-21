@@ -11,13 +11,13 @@ public class CommonConditions {
     protected WebDriver driver;
 
 
-    @BeforeTest()
+    @BeforeMethod()
     public void setUp()
     {
         driver = DriverSingleton.getDriver();
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void stopBrowser()
     {
         DriverSingleton.closeDriver();
