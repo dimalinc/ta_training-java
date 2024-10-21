@@ -11,6 +11,8 @@ import page.AbstractPage;
 import java.time.Duration;
 import java.util.List;
 
+import static util.Utils.waitForElementTextToBePresent;
+
 
 public class CalculatorPage extends AbstractPage {
 
@@ -80,8 +82,10 @@ public class CalculatorPage extends AbstractPage {
     }
 
     private void dropdownList_performSelection(List<WebElement> dropdownList, String dropdownElementName) {
+     //   for(WebElement element : dropdownList) {System.out.println(element.getText());}
+
         dropdownList.stream()
-                .filter((element) -> element.getText().equals(dropdownElementName))
+                .filter((element) -> element.getText().contains(dropdownElementName))
                 .findAny()
                 .ifPresent(WebElement::click);
         log.info("Choosing an option: {}", dropdownElementName);
@@ -100,6 +104,7 @@ public class CalculatorPage extends AbstractPage {
     }
 
     public CalculatorPage enter_numberOfInstances(int numberOfInstances) {
+        waitForElementVisible(driver,input_numberOfInstances);
         input_numberOfInstances.clear();
         input_numberOfInstances.sendKeys(String.valueOf(numberOfInstances));
         log.info("Entered number of instances: {}", numberOfInstances);
@@ -108,7 +113,11 @@ public class CalculatorPage extends AbstractPage {
 
     public CalculatorPage selectServerType(String serverType) {
         machineTypeDropdown.click();
+
         dropdownList_performSelection(dropdovnList_machineTypes,serverType);
+
+        waitForElementTextToBePresent(driver,5000,250,machineTypeTextAfterSelectingPerformed,serverType);
+
         log.info("Server type set to: {}\n Expected type: {}", machineTypeTextAfterSelectingPerformed.getText(), serverType);
         return this;
     }
