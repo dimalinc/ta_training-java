@@ -1,17 +1,18 @@
-package test;
+package test_junit;
 
 import model.CloudServerConfig;
 import model.CloudServerConfigInit;
 import org.assertj.core.api.SoftAssertions;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import page.cloud.google.com.CalculatorPage;
 import page.cloud.google.com.PageDetailedView;
+import test.BaseTest;
 import util.ResourceBundleReader;
-import static org.testng.AssertJUnit.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-
-public class GoogleCloudTest extends BaseTest {
+public class GoogleCloudTest_junit extends BaseTest {
 
     private CalculatorPage calculator;
     private PageDetailedView detailedView;
@@ -80,8 +81,8 @@ public class GoogleCloudTest extends BaseTest {
 
     }*/
 
-    @Test(priority=2)
-    void priceIsGettingEstimated() {
+    @Test/*(priority=2)*/
+    public void priceIsGettingEstimated() {
         CalculatorPage calculator = new CalculatorPage(driver);
         CloudServerConfig cloudServerConfig = CloudServerConfigInit.initializeForm();
 

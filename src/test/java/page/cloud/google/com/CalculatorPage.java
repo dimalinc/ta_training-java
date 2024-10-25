@@ -11,8 +11,6 @@ import page.AbstractPage;
 import java.time.Duration;
 import java.util.List;
 
-import static util.Utils.waitForElementTextToBePresent;
-
 
 public class CalculatorPage extends AbstractPage {
 
@@ -23,10 +21,8 @@ public class CalculatorPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='c22']")
     private WebElement input_numberOfInstances;
 
-
     @FindBy(xpath = "//ul[@aria-label='Machine type']/../..")
     private WebElement machineTypeDropdown;
-
 
     private final String xpathString_serverTypeChosen = "//ul[@aria-label='Machine type']"+"/../..//div/span/following-sibling::span/span";
     @FindBy(xpath = xpathString_serverTypeChosen)
@@ -37,7 +33,7 @@ public class CalculatorPage extends AbstractPage {
     @FindBy(xpath = "    //button[@aria-label='Add GPUs']")
     private WebElement button_addGPUs;
     @FindBy(xpath = "//ul[@aria-label='GPU Model']/../..")
-    private WebElement gpuModelDropdown;
+    private WebElement dropdownList_gpuModel;
     @FindBy(xpath = "//ul[@aria-label='GPU Model']"+"/../..//div/span/following-sibling::span/span")
     private WebElement gpuModelText;
     @FindBy(xpath = "//ul[@aria-label='GPU Model']/li")
@@ -52,6 +48,8 @@ public class CalculatorPage extends AbstractPage {
 
     @FindBy(xpath = "//ul[@aria-label='Region']/..//..")
     private WebElement locationDropdown;
+
+    String  xpathString_locationsList="//ul[@aria-label='Region']/li";
     @FindBy(xpath = "//ul[@aria-label='Region']/li")
     private List<WebElement> locationsList;
     @FindBy(xpath = "//ul[@aria-label='Region']" +"/../..//div/span/following-sibling::span/span")
@@ -65,6 +63,12 @@ public class CalculatorPage extends AbstractPage {
 
     @FindBy(xpath = "//a[@aria-label='Open detailed view']")
     private WebElement a_OpenDetailedView;
+
+    @FindBy(xpath="//div[contains(text(),'Calculating changes')]")
+    private WebElement divCalculatingChanges;
+
+    @FindBy(xpath="//div[contains(text(),'Service cost updated')]")
+    private WebElement divServiceCostUpdated;
 
     private static final Logger log = LogManager.getLogger(CalculatorPage.class);
 
@@ -80,8 +84,7 @@ public class CalculatorPage extends AbstractPage {
     }
 
     private void dropdownList_performSelection(List<WebElement> dropdownList, String dropdownElementName) {
-     //   for(WebElement element : dropdownList) {System.out.println(element.getText());}
-
+      //  for(WebElement element : dropdownList) {System.out.println(element.getText());}
         dropdownList.stream()
                 .filter((element) -> element.getText().contains(dropdownElementName))
                 .findAny()
@@ -93,6 +96,16 @@ public class CalculatorPage extends AbstractPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10L));
         wait.until(ExpectedConditions.visibilityOf(element));
         return element;
+    }
+
+    public CalculatorPage divServiceCostUpdated_click() {
+        waitForElementVisible(driver,divServiceCostUpdated).click();
+        return this;
+    }
+
+    public CalculatorPage divCalculatingChanges_click() {
+        waitForElementVisible(driver,divCalculatingChanges).click();
+        return this;
     }
 
     public CalculatorPage compute_engine_click() {
@@ -113,16 +126,20 @@ public class CalculatorPage extends AbstractPage {
         machineTypeDropdown.click();
 
         dropdownList_performSelection(dropdovnList_machineTypes,serverType);
-
         //waitForElementTextToBePresent(driver,5000,250,machineTypeTextAfterSelectingPerformed,serverType);
-
         log.info("Server type set to: {}\n Expected type: {}", machineTypeTextAfterSelectingPerformed.getText(), serverType);
         return this;
     }
 
-    public CalculatorPage addAndSelectGpus(String inputGpuModel) {
+    public CalculatorPage click_button_addGPUs() {
         button_addGPUs.click();
-        gpuModelDropdown.click();
+        return this;
+    }
+
+    public CalculatorPage addAndSelectGpus(String inputGpuModel) {
+        click_button_addGPUs();
+        waitForElementVisible(driver,dropdownList_gpuModel);
+        dropdownList_gpuModel.click();
         dropdownList_performSelection(gpuModelList, inputGpuModel);
         log.info("Selected GPU model is: {}\n Expected GPU model: {}", gpuModelText.getText(), inputGpuModel);
         return this;
@@ -137,6 +154,7 @@ public class CalculatorPage extends AbstractPage {
 
     public CalculatorPage select_Location(String location_for_selection) {
         locationDropdown.click();
+        locationsList=driver.findElements(By.xpath(xpathString_locationsList));
         dropdownList_performSelection(locationsList, location_for_selection);
         log.info("Actual location: {}\n Expected is: {}", regionTextLocator.getText(), location_for_selection);
         return this;
@@ -144,6 +162,7 @@ public class CalculatorPage extends AbstractPage {
 
     public CalculatorPage commitedUsage_click() {
         label_commitedUsage.click();
+        log.info("Comitted use clicked",label_commitedUsage.getText());
         return this;
     }
 
@@ -219,25 +238,7 @@ public class CalculatorPage extends AbstractPage {
     //button[text()='Copy link']  sent link (saved to variable)
 
 
-    //https://yopmail.com/
-    //input[@placeholder='Enter your inbox here']
-    //h3[text()='Random Email generator']
-    //span[@class='notmobile'][text()='Copy to clipboard']
 
-    //span[text()='Check Inbox']
-
-    //button[@id='newmail']
-
-    //iframe name="ifmail"
-    //input[@id="msgto"']
-    //input[@id="msgsubject"]
-    //div[@id="msgbody"]
-    //span[text()=' Send']
-
-    //button[@id='refresh']
-    //button[@class="lm"] ? [1]
-
-    // in frame //div[@id="mail"] - compare with sent link (saved to variable)
 
 }
 

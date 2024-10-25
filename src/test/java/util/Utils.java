@@ -11,6 +11,8 @@ import java.time.Duration;
 
 public class Utils {
 
+
+
     private static FluentWait fluentWaitInit(WebDriver driver,int timeout,int pollingInterval) {
         FluentWait wait = new FluentWait(driver);
         wait.withTimeout(Duration.ofMillis(timeout));
@@ -25,7 +27,14 @@ public class Utils {
         fluentWait.until(ExpectedConditions.textToBePresentInElement(element, text) );
     }
 
-    public static void waitForElementPresence(WebDriver driver, int timeout, int pollingInterval, By by)
+    public static WebElement waitForElementPresence(WebDriver driver, int timeout, int pollingInterval, WebElement  element)
+    {
+        FluentWait fluentWait =  fluentWaitInit(driver,timeout,pollingInterval);
+        fluentWait.until(ExpectedConditions.visibilityOf(element));
+        return element;
+    }
+
+    public static void waitForElementByXpathPresence(WebDriver driver, int timeout, int pollingInterval, By by)
     {
         FluentWait fluentWait =  fluentWaitInit(driver,timeout,pollingInterval);
         fluentWait.until(ExpectedConditions.presenceOfElementLocated(by) );

@@ -1,24 +1,24 @@
-package test;
+package test_junit;
 
 import driver.DriverSingleton;
-import org.testng.annotations.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import util.TestListener;
 import util.TestListener_junit;
 
 
-//@ExtendWith(TestListener.class)
-@Listeners(TestListener.class)
-public class BaseTest {
+@ExtendWith(TestListener_junit.class)
+public class BaseTest_junit {
 
     protected WebDriver driver;
 
-    @BeforeMethod
+    @BeforeEach
     public void setUp() {
         driver = DriverSingleton.getDriver();
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterEach/*(alwaysRun = true)*/
     public void stopBrowser() {
         DriverSingleton.closeDriver();
     }
