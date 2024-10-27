@@ -1,7 +1,5 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.page;
-
-import com.epam.training.student_dmitriy_plaksin.practice1_Framework.page.cloud.google.com.CalculatorPage;
-import com.epam.training.student_dmitriy_plaksin.practice1_Framework.util.Utils;
+import com.epam.training.student_dmitriy_plaksin.Final_task.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +16,7 @@ public class PageLogin extends AbstractPage{
     @FindBy(xpath = "//input[@data-test='login-button']") private WebElement button_login;
     @FindBy(xpath = "//h3[@data-test='error']") private WebElement text_errorMessage;
 
-    private static final Logger log = LogManager.getLogger(CalculatorPage.class);
+    private static final Logger log = LogManager.getLogger(PageLogin.class);
 
 
     public PageLogin(WebDriver driver) {

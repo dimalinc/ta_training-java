@@ -1,12 +1,9 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.test;
-
 import com.epam.training.student_dmitriy_plaksin.Final_task.dataModel.DataTransferObjectMaker;
 import com.epam.training.student_dmitriy_plaksin.Final_task.dataModel.DataTransferObject_model;
 import com.epam.training.student_dmitriy_plaksin.Final_task.page.PageLogin;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-
 
 public class PageLoginSaucedemoTest extends BaseTest {
 
