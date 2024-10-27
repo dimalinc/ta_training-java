@@ -1,9 +1,8 @@
-package com.epam.training.student_dmitriy_plaksin.practice1_Framework.driver;
+package com.epam.training.student_dmitriy_plaksin.Final_task.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Objects;
 
@@ -21,10 +20,8 @@ public class DriverSingleton {
                     driver = new FirefoxDriver();
                 }
                 default: {*/
-                    /*WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();*/
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
               /*  }
             }*/
             driver.manage().window().maximize();
