@@ -46,7 +46,7 @@ public class PageLoginSaucedemoTest extends BaseTest {
       //  System.out.println("errorMessage = " + errorMessage);
     }
 
-    @DataProvider(name = "provider")
+ //   @DataProvider(name = "provider")
     static Object[] testInfoProvider() {
         return new Object[]{
                /* DataTransferObjectMaker.getTestData_1(),

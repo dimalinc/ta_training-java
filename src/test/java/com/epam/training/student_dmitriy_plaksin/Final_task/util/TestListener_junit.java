@@ -3,11 +3,11 @@ package com.epam.training.student_dmitriy_plaksin.Final_task.util;
 import com.epam.training.student_dmitriy_plaksin.practice1_Framework.driver.DriverSingleton;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.core.util.JsonUtils;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -31,6 +31,7 @@ public class TestListener_junit implements TestWatcher/*, BeforeTestExecutionCal
         File screenCapture = ((TakesScreenshot) DriverSingleton
                 .getDriver())
                 .getScreenshotAs(OutputType.FILE);
+        System.out.println("screenCapture.length() = " + screenCapture.length() );
         try {
             FileUtils.copyFile(screenCapture, new File(
                     ".//target/screenshots/"

@@ -3,6 +3,7 @@ package com.epam.training.student_dmitriy_plaksin.Final_task.driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Objects;
 
@@ -20,8 +21,11 @@ public class DriverSingleton {
                     driver = new FirefoxDriver();
                 }
                 default: {*/
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    /*WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();*/
+
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
               /*  }
             }*/
             driver.manage().window().maximize();
@@ -31,7 +35,7 @@ public class DriverSingleton {
 
     public static void closeDriver() {
         if (driver != null) {
-            driver.quit();
+            driver.close();
             driver = null;
         }
     }
