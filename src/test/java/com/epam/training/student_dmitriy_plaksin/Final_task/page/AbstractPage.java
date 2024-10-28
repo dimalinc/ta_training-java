@@ -2,6 +2,7 @@ package com.epam.training.student_dmitriy_plaksin.Final_task.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.util.JsonUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -25,6 +26,7 @@ public abstract class AbstractPage
     }
 
     public String get_page_title() {
+        log.info("page_title = " + driver.getTitle());
         return driver.getTitle();
     }
 }

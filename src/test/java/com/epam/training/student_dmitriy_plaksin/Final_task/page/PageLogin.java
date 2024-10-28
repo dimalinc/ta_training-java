@@ -49,6 +49,10 @@ public class PageLogin extends AbstractPage{
         return text_errorMessage.getText();
     }
 
+    public PageInventory navigate_to_inventory() {
+        return new PageInventory(driver);
+    }
+
 
 
 

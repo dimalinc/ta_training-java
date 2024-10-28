@@ -1,19 +1,39 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.test;
 import com.epam.training.student_dmitriy_plaksin.Final_task.dataModel.DataTransferObjectMaker;
 import com.epam.training.student_dmitriy_plaksin.Final_task.dataModel.DataTransferObject_model;
+import com.epam.training.student_dmitriy_plaksin.Final_task.page.PageInventory;
 import com.epam.training.student_dmitriy_plaksin.Final_task.page.PageLogin;
+import org.openqa.selenium.TimeoutException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class PageLoginSaucedemoTest extends BaseTest {
 
     @Test(dataProvider = "provider")
    // @MethodSource("provider")
     void validatePageLoginErrorMessage(DataTransferObject_model dto) {
+        SoftAssert softAssert = new SoftAssert();
         PageLogin pageLogin = new PageLogin(driver);
-        String errorMessage= pageLogin.navigate_to()
-                .perform_login(dto.getLogin_username(),dto.getLogin_password())
-                .getErrorMessage();
+        pageLogin= pageLogin.navigate_to()
+                .perform_login(dto.getLogin_username(),dto.getLogin_password());
+
+        String errorMessage = "";
+        try {
+            errorMessage = pageLogin.getErrorMessage();
+            softAssert.assertTrue(errorMessage.contains(dto.getMessage_text()));
+        }catch (TimeoutException e) {/*e.printStackTrace();*/}
+                
+       if (!errorMessage.contains(dto.getMessage_text()) ) {
+           PageInventory pageInventory = new PageInventory(driver);
+           softAssert.assertTrue(pageInventory.wasOpened());
+           String titlePageInventory = pageInventory.get_page_title();
+           softAssert.assertTrue(titlePageInventory.contains(dto.getPage_title()));
+       }
+
+        softAssert.assertAll();
+
+
 
       //  System.out.println("errorMessage = " + errorMessage);
     }
