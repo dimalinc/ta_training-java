@@ -7,11 +7,19 @@ import org.openqa.selenium.TimeoutException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
+@Slf4j
+@Execution(ExecutionMode.CONCURRENT)
 public class PageLoginSaucedemoTest extends BaseTest {
 
-    @Test(dataProvider = "provider")
-   // @MethodSource("provider")
+   // @Test(dataProvider = "provider")
+    @ParameterizedTest
+    @MethodSource("testInfoProvider")
     void validatePageLoginErrorMessage(DataTransferObject_model dto) {
         SoftAssert softAssert = new SoftAssert();
         PageLogin pageLogin = new PageLogin(driver);
