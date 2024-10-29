@@ -2,9 +2,9 @@ package com.epam.training.student_dmitriy_plaksin.Final_task.test;
 
 import com.epam.training.student_dmitriy_plaksin.Final_task.driver.DriverSingleton;
 import com.epam.training.student_dmitriy_plaksin.Final_task.util.TestListener_junit;
-import org.junit.After;
+/*import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.BeforeClass;*/
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
