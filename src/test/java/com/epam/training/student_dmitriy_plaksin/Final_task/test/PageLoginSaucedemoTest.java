@@ -23,6 +23,8 @@ public class PageLoginSaucedemoTest extends BaseTest {
     @MethodSource("testInfoProvider")
     void validatePageLoginErrorMessage(DataTransferObject_model dto) {
     //    SoftAssert softAssert = new SoftAssert();
+        log.info("Trying to LogIn using login: {}, pass: {}",
+                "'" + dto.getLogin_username() + "'", "'" + dto.getLogin_password() + "'");
 
         PageLogin pageLogin = new PageLogin(driver);
         pageLogin= pageLogin.navigate_to()
@@ -42,12 +44,12 @@ public class PageLoginSaucedemoTest extends BaseTest {
            String titlePageInventory = pageInventory.get_page_title();
          //  softAssert.assertTrue(titlePageInventory.contains(dto.getPage_title()));
            assertThat(titlePageInventory,containsString(dto.getPage_title()) );
-
        }
-
      //   softAssert.assertAll();
-
       //  System.out.println("errorMessage = " + errorMessage);
+        log.info("Login attempt successful for login: {}, pass: {}",
+                dto.getLogin_username(), dto.getLogin_password());
+
     }
 
    // @DataProvider(name = "provider")

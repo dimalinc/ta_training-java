@@ -18,7 +18,7 @@ public class TestListener_junit implements TestWatcher/*, BeforeTestExecutionCal
 
     @Override
     public void testSuccessful(ExtensionContext context) {
-        System.out.println("testSuccessful()");
+    //    System.out.println("testSuccessful()");
     }
 
     @Override
@@ -31,7 +31,6 @@ public class TestListener_junit implements TestWatcher/*, BeforeTestExecutionCal
         File screenCapture = ((TakesScreenshot) DriverSingleton
                 .getDriver())
                 .getScreenshotAs(OutputType.FILE);
-        System.out.println("screenCapture.length() = " + screenCapture.length() );
         try {
             FileUtils.copyFile(screenCapture, new File(
                     ".//target/screenshots/"

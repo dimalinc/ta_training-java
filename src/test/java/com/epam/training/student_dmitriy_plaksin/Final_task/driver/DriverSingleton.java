@@ -16,12 +16,12 @@ public class DriverSingleton {
 
     public static WebDriver getDriver(){
         if (driver==null) {
-            switch (System.getProperty("browser", "chrome")) {
-                case "chrome": {
+            switch (System.getProperty("browser", "firefox")) {
+               /* case "chrome": {
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
                     break;
-                }
+                }*/
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
@@ -32,7 +32,7 @@ public class DriverSingleton {
                     driver = new EdgeDriver();
                     break;
                 }
-                case "chromium": {
+                /*case "chromium": {
                     WebDriverManager.chromiumdriver().setup();
                     driver = new ChromeDriver();
                     break;
@@ -46,7 +46,7 @@ public class DriverSingleton {
                     WebDriverManager.iedriver().setup();
                     driver = new InternetExplorerDriver();
                     break;
-                }
+                }*/
             }
             driver.manage().window().maximize();
         }
