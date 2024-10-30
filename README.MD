@@ -9,6 +9,6 @@ To run the default test suite with **Firefox** Driver run mvn clean test
 
 To run the tests with Edge browser: 
 **mvn clean test -Dbrowser=Edge** 
-or 
+or  
 **mvn test -Dbrowser=Edge**
 ![img.png](img.png)
