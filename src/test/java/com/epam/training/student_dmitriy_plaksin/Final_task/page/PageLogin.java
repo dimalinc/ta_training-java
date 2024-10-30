@@ -30,20 +30,26 @@ public class PageLogin extends AbstractPage{
         return this;
     }
 
-    public PageLogin perform_login(String usernameString, String passwordString) {
-        input_username.sendKeys(usernameString);
-         input_password.sendKeys(passwordString);
-        click_buttonLogin();
+    public PageInventory perform_login(String usernameString, String passwordString) {
+        enterLoginCredentials(usernameString, passwordString).
+                click_buttonLogin();
         log.info("Logging in with credentials: "+ usernameString + " and password: " + passwordString);
+        return new PageInventory(driver);
+    }
+
+    public PageLogin enterLoginCredentials(String usernameString, String passwordString) {
+        input_username.sendKeys(usernameString);
+        input_password.sendKeys(passwordString);
+        log.info("Entered credentials");
         return this;
     }
 
-    public PageLogin click_buttonLogin() {
+    public PageInventory click_buttonLogin() {
         button_login.click();
-        return this;
+        return new PageInventory(driver);
     }
 
-    public String getErrorMessage() {
+    public String getText_errorMessage() {
         String text_error = Utils.waitForElementPresence(driver,5000,250,text_errorMessage).getText();
         log.info("Got errorMessageText = "+text_errorMessage.getText());
         return text_errorMessage.getText();

@@ -27,18 +27,19 @@ public class PageLoginSaucedemoTest extends BaseTest {
                 "'" + dto.getLogin_username() + "'", "'" + dto.getLogin_password() + "'");
 
         PageLogin pageLogin = new PageLogin(driver);
-        pageLogin= pageLogin.navigate_to()
-                .perform_login(dto.getLogin_username(),dto.getLogin_password());
+        PageInventory pageInventory = pageLogin.navigate_to()
+                .enterLoginCredentials(dto.getLogin_username(),dto.getLogin_password())
+                .click_buttonLogin();
 
         String errorMessage = "";
         try {
-            errorMessage = pageLogin.getErrorMessage();
+            errorMessage = pageLogin.getText_errorMessage();
           //  softAssert.assertTrue(errorMessage.contains(dto.getMessage_text()));
             assertThat(errorMessage,containsString(dto.getMessage_text()) );
         }catch (TimeoutException e) {/*e.printStackTrace();*/}
                 
        if (!errorMessage.contains(dto.getMessage_text()) ) {
-           PageInventory pageInventory = new PageInventory(driver);
+        //   PageInventory pageInventory = new PageInventory(driver);
          //  softAssert.assertTrue(pageInventory.wasOpened());
            assertTrue(pageInventory.wasOpened());
            String titlePageInventory = pageInventory.get_page_title();
@@ -49,7 +50,6 @@ public class PageLoginSaucedemoTest extends BaseTest {
       //  System.out.println("errorMessage = " + errorMessage);
         log.info("Login attempt successful for login: {}, pass: {}",
                 dto.getLogin_username(), dto.getLogin_password());
-
     }
 
    // @DataProvider(name = "provider")

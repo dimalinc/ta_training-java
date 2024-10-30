@@ -1,6 +1,7 @@
 Automated UI tests using Selenium Web Driver  
 https://saucedemo.com
 
+
 Supported browsers:  Firefox, Edge
 
 Browser environment by default is set to Firefox. 
