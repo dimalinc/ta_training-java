@@ -7,8 +7,8 @@ Supported browsers:  Firefox, Edge
 Browser environment by default is set to Firefox. 
 To run the default test suite with **Firefox** Driver run mvn clean test
 
-To run the tests with Edge browser: 
-**mvn clean test -Dbrowser=Edge** 
-or  
-**mvn test -Dbrowser=Edge**
+To run the tests with Edge browser:
+**mvn test -Dbrowser=edge** or
+**mvn clean test -Dbrowser=edge**
+
 ![img.png](img.png)
