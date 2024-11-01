@@ -45,10 +45,9 @@ public class StepDefinitions_swaglabs {
         }
     }
 
-    @After
+   /* @After
     public void stopBrowser() {
         DriverSingleton.closeDriver();
-    }
-
+    }*/
 
 }

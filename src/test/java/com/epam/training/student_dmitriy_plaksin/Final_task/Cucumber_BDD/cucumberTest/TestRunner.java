@@ -4,7 +4,6 @@ import org.junit.platform.suite.api.*;
 import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
-
 //https://stackoverflow.com/questions/64587739/cucumberoptions-in-cucumber-junit-platform-engine
 @Suite
 @IncludeEngines("cucumber")

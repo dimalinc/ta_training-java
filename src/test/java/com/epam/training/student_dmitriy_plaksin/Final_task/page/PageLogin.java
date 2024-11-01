@@ -44,13 +44,19 @@ public class PageLogin extends AbstractPage{
         return this;
     }
 
+    public PageLogin clearInputsIntendedToBeEmpty(String username, String pass) {
+        if (username.equals("")) {input_username.clear();}
+        if (pass.equals("")) {input_password.clear();}
+        return this;
+    }
+
     public PageInventory click_buttonLogin() {
         button_login.click();
         return new PageInventory(driver);
     }
 
     public String getText_errorMessage() {
-        String text_error = Utils.waitForElementPresence(driver,5000,250,text_errorMessage).getText();
+        String text_error = Utils.waitForElementPresence(driver,1000,250,text_errorMessage).getText();
         log.info("Got errorMessageText = "+text_errorMessage.getText());
         return text_errorMessage.getText();
     }

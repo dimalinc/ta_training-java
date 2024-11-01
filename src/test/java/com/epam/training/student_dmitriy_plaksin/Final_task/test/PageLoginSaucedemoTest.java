@@ -15,12 +15,12 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-@Execution(ExecutionMode.CONCURRENT)
 public class PageLoginSaucedemoTest extends BaseTest {
 
    // @Test(dataProvider = "provider")
     @ParameterizedTest
     @MethodSource("testInfoProvider")
+    @Execution(ExecutionMode.CONCURRENT)
     void validatePageLoginErrorMessage(DataTransferObject_model dto) {
     //    SoftAssert softAssert = new SoftAssert();
         log.info("Trying to LogIn using login: {}, pass: {}",
@@ -29,6 +29,7 @@ public class PageLoginSaucedemoTest extends BaseTest {
         PageLogin pageLogin = new PageLogin(driver);
         PageInventory pageInventory = pageLogin.navigate_to()
                 .enterLoginCredentials(dto.getLogin_username(),dto.getLogin_password())
+                .clearInputsIntendedToBeEmpty(dto.getLogin_username(),dto.getLogin_password())
                 .click_buttonLogin();
 
         String errorMessage = "";
@@ -55,12 +56,11 @@ public class PageLoginSaucedemoTest extends BaseTest {
    // @DataProvider(name = "provider")
     static Object[] testInfoProvider() {
         return new Object[]{
-               /* DataTransferObjectMaker.getTestData_1(),
-                DataTransferObjectMaker.getTestData_2(),
-                DataTransferObjectMaker.getTestData_3(),*/
                 DataTransferObjectMaker.getTestData(1),
                 DataTransferObjectMaker.getTestData(2),
                 DataTransferObjectMaker.getTestData(3)
         };
     }
+
+
 }
