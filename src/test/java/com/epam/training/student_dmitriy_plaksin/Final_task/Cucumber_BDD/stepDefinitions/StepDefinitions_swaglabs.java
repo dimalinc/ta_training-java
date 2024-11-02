@@ -1,8 +1,11 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.Cucumber_BDD.stepDefinitions;
 
 
+import com.epam.training.student_dmitriy_plaksin.Final_task.driver.DriverSingleton;
 import com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory.DriverThreadLocal;
 import com.epam.training.student_dmitriy_plaksin.Final_task.page.*;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -42,6 +45,11 @@ public class StepDefinitions_swaglabs {
             String actualTitle = page_inventory.get_page_title();
             assertEquals(expectedMessage, actualTitle);
         }
+    }
+
+    @After
+    public void stopBrowser() {
+        DriverThreadLocal.tearDown();
     }
 
 }
