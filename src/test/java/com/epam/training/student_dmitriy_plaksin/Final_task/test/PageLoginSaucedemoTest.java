@@ -17,12 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Slf4j
 public class PageLoginSaucedemoTest extends BaseTest {
 
-   // @Test(dataProvider = "provider")
     @ParameterizedTest
     @MethodSource("testInfoProvider")
     @Execution(ExecutionMode.CONCURRENT)
     void validatePageLoginErrorMessage(DataTransferObject_model dto) {
-    //    SoftAssert softAssert = new SoftAssert();
         log.info("Trying to LogIn using login: {}, pass: {}",
                 "'" + dto.getLogin_username() + "'", "'" + dto.getLogin_password() + "'");
 
@@ -35,25 +33,18 @@ public class PageLoginSaucedemoTest extends BaseTest {
         String errorMessage = "";
         try {
             errorMessage = pageLogin.getText_errorMessage();
-          //  softAssert.assertTrue(errorMessage.contains(dto.getMessage_text()));
             assertThat(errorMessage,containsString(dto.getMessage_text()) );
         }catch (TimeoutException e) {/*e.printStackTrace();*/}
                 
        if (!errorMessage.contains(dto.getMessage_text()) ) {
-        //   PageInventory pageInventory = new PageInventory(driver);
-         //  softAssert.assertTrue(pageInventory.wasOpened());
            assertTrue(pageInventory.wasOpened());
            String titlePageInventory = pageInventory.get_page_title();
-         //  softAssert.assertTrue(titlePageInventory.contains(dto.getPage_title()));
            assertThat(titlePageInventory,containsString(dto.getPage_title()) );
        }
-     //   softAssert.assertAll();
-      //  System.out.println("errorMessage = " + errorMessage);
         log.info("Login attempt successful for login: {}, pass: {}",
                 dto.getLogin_username(), dto.getLogin_password());
     }
 
-   // @DataProvider(name = "provider")
     static Object[] testInfoProvider() {
         return new Object[]{
                 DataTransferObjectMaker.getTestData(1),
