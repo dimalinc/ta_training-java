@@ -1,9 +1,8 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.Cucumber_BDD.stepDefinitions;
 
 
+import com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory.DriverThreadLocal;
 import com.epam.training.student_dmitriy_plaksin.Final_task.page.*;
-import com.epam.training.student_dmitriy_plaksin.Final_task.driver.*;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,7 +19,7 @@ public class StepDefinitions_swaglabs {
 
     @Before
     public void setUp() {
-        driver = DriverSingleton.getDriver();
+       driver = DriverThreadLocal.getDriver();
     }
 
     @Given("User opens SwagLabs login page")
@@ -44,10 +43,5 @@ public class StepDefinitions_swaglabs {
             assertEquals(expectedMessage, actualTitle);
         }
     }
-
-   /* @After
-    public void stopBrowser() {
-        DriverSingleton.closeDriver();
-    }*/
 
 }

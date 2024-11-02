@@ -1,8 +1,6 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory;
 
 import org.openqa.selenium.WebDriver;
-import com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory.EdgeCreator;
-import com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory.FirefoxCreator;
 import java.time.Duration;
 
 public final class DriverFactory {

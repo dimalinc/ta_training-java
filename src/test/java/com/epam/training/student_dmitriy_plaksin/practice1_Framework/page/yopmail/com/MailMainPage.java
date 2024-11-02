@@ -28,6 +28,7 @@ public class MailMainPage extends AbstractPage {
 
 }
 
+
 //https://yopmail.com/
 //input[@placeholder='Enter your inbox here']
 //h3[text()='Random Email generator']

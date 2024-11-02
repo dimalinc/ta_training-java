@@ -1,5 +1,5 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.util;
-import com.epam.training.student_dmitriy_plaksin.Final_task.driver.DriverSingleton;
+import com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory.DriverThreadLocal;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,7 +32,7 @@ public class TestListener implements ITestListener {
     }
 
     private void takeScreenshot() throws IOException {
-        File screenCapture = ((TakesScreenshot) DriverSingleton
+        File screenCapture = ((TakesScreenshot) DriverThreadLocal
                 .getDriver())
                 .getScreenshotAs(OutputType.FILE);
         try {

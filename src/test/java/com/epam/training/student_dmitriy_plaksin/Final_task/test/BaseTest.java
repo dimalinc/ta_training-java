@@ -1,37 +1,24 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.test;
 
-import com.epam.training.student_dmitriy_plaksin.Final_task.driver.DriverSingleton;
 import com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory.DriverThreadLocal;
 import com.epam.training.student_dmitriy_plaksin.Final_task.util.TestListener_junit;
-/*import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;*/
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.suite.api.AfterSuite;
-import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
-import com.epam.training.student_dmitriy_plaksin.Final_task.util.TestListener;
 
 
 @ExtendWith(TestListener_junit.class)
-//@Listeners(TestListener.class)
 public class BaseTest {
 
     protected WebDriver driver;
 
-   // @BeforeMethod
    @BeforeEach
-  //  public void setUp() {driver = DriverSingleton.getDriver();}
     public void setUp() {
         driver = DriverThreadLocal.getDriver();
     }
 
- //     @AfterMethod(alwaysRun = true)
- // @AfterSuite
- // public void stopBrowser() {DriverSingleton.closeDriver();}
+
  @AfterEach
  public void stopBrowser() {DriverThreadLocal.tearDown();}
 

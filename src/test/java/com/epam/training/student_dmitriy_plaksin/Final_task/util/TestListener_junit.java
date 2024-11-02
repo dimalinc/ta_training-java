@@ -1,9 +1,8 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.util;
 
-import com.epam.training.student_dmitriy_plaksin.practice1_Framework.driver.DriverSingleton;
+import com.epam.training.student_dmitriy_plaksin.Final_task.driver.driverFactory.DriverThreadLocal;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.core.util.JsonUtils;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.OutputType;
@@ -28,7 +27,7 @@ public class TestListener_junit implements TestWatcher/*, BeforeTestExecutionCal
     }
 
     private void screenshot_make(){
-        File screenCapture = ((TakesScreenshot) DriverSingleton
+        File screenCapture = ((TakesScreenshot) DriverThreadLocal
                 .getDriver())
                 .getScreenshotAs(OutputType.FILE);
         try {

@@ -1,8 +1,5 @@
 package com.epam.training.student_dmitriy_plaksin.Final_task.dataModel;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 public class DataTransferObject_model {
     private String page_title;
     private String login_username;
